@@ -1,0 +1,41 @@
+# Xiaomi / Redmi / POCO packages tools/pad.py refuses to touch (override with --force).
+# Seeded from the "danger" ratings in xiaomi-debloater and UAD-ng, checked on a Redmi Pad 2 Pro
+# (HyperOS 3.0). On HyperOS several of these bootloop the device or lock you out of Settings.
+
+# HyperOS core: bootloop or missing system services
+com.miui.core
+com.miui.core.internal.services
+com.miui.rom
+com.miui.system
+miui.systemui.plugin                   # Control Centre and notification shade
+com.miui.home                          # the launcher; HyperOS gestures only work with it
+android.miui.home.launcher.res
+com.miui.securitycenter                # permissions, app lock, autostart: Settings depends on it
+com.miui.securitycore
+com.miui.securityadd
+com.miui.guardprovider
+com.lbe.security.miui                  # permission manager
+com.miui.powerkeeper                   # battery and thermal management
+com.miui.notification
+com.miui.screenshot
+com.miui.aod                           # lock screen and always-on display
+com.miui.miwallpaper                   # without it the wallpaper goes black
+com.android.thememanager               # lock screen wallpaper and fonts break without it
+com.xiaomi.misettings
+com.xiaomi.xmsf                        # Xiaomi push: notifications for Xiaomi apps
+com.xiaomi.account
+com.xiaomi.micloud.sdk
+com.miui.cloudservice
+com.xiaomi.finddevice                  # also the anti-theft lock: removing it can lock the device
+com.xiaomi.phone
+com.xiaomi.ugd
+com.xiaomi.discover                    # system app updater
+
+# Updates
+com.android.updater                    # HyperOS OTA updates
+
+# Tablet hardware
+com.xiaomi.touchservice                # Focus Pen and touch tuning on Xiaomi/Redmi Pads
+com.xiaomi.bluetooth                   # pen, keyboard and earbud pairing UI
+com.android.camera
+com.android.wifi.resources.xiaomi

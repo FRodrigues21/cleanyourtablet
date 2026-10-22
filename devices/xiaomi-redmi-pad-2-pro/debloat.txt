@@ -1,0 +1,105 @@
+# Xiaomi Redmi Pad 2 Pro (25099RP13G, flute, flute_eea), HyperOS OS3.0.303.0.WPWEUXM, Android 16 (SDK 36), region PT
+# Global/EEA ROM, Snapdragon 7s Gen 3 (SM7635), 6 GB RAM. Sold in some shops as "Redmi Pad Pro 2".
+# Tested: 55 packages off, then reboot; Home, notifications, Settings, Wi-Fi and Play Store fine.
+#
+# Apply:   tools/pad.py disable devices/xiaomi-redmi-pad-2-pro/debloat.txt
+# Undo:    tools/pad.py restore devices/xiaomi-redmi-pad-2-pro/debloat.txt
+# HyperOS 3 refuses `pm disable-user` for every preinstalled system app ("SecurityException: Cannot
+# disable system packages"), so most of these end up removed for user 0 instead (pad.py does this
+# itself and records it); apps updated through the store (Notes, Weather, Calculator...) disable
+# normally. Nothing is uninstalled from the system partition; restore brings everything back.
+# Comment out any line you want to keep. Lines starting "# " + a package name are optional:
+# uncomment the ones you don't use.
+#
+# Kept on purpose: com.xiaomi.joyose (game/thermal profiles; xiaomi-debloater rates it dangerous),
+# com.miui.daemon and com.miui.miservice (reports differ on HyperOS 3), Xiaomi Cloud, Find Device,
+# Mi Share, the Gallery, the File Manager, the pen and keyboard services, and com.bsp.logmanager
+# (a flute-specific log tool running as android.uid.system; undocumented, so left alone).
+
+# Xiaomi telemetry and diagnostics
+com.miui.analytics
+com.miui.misightservice                # MiSight diagnostics collector
+com.miui.bugreport                     # Mi Feedback, sends logs to Xiaomi
+com.miui.thirdappassistant             # third-party app problem reporter
+com.xiaomi.mtb                         # hidden baseband debug tool
+
+# Xiaomi ads
+com.miui.msa.global                    # MSA, the system ad engine behind ads in Xiaomi apps
+
+# Xiaomi extras nobody asked for
+com.miui.cleaner                       # "Cleaner" with ads; storage cleanup stays in Settings
+com.xiaomi.barrage                     # Game Turbo bullet notifications
+com.xiaomi.payment                     # Mi Pay / Mi Credit component
+com.miuix.editor                       # Frequent Phrases text helper
+com.xiaomi.aiasst.vision               # AI call assistant helper; no phone calls on a tablet
+
+# Google services you don't need after setup
+com.google.android.feedback            # crash report sender
+com.google.android.federatedcompute    # federated learning
+com.google.android.ondevicepersonalization.services   # Privacy Sandbox ad personalisation
+com.google.android.onetimeinitializer  # first-boot only
+com.google.android.apps.restore        # restore wizard used during setup
+com.google.android.apps.setupwizard.searchselector    # search engine chooser during setup
+com.google.android.printservice.recommendation
+com.google.android.gms.location.history               # stub
+com.google.ambient.streaming           # streams apps to a Chromebook
+
+# Hidden Qualcomm debug and test tools
+com.qti.qualcomm.deviceinfo
+com.qualcomm.qti.qms.service.connectionsecurity
+com.qualcomm.qti.qms.service.trustzoneaccess
+com.qualcomm.qti.ridemodeaudio
+com.qualcomm.qti.xrvd.service
+
+# Carrier presets and auto-installers
+android.autoinstalls.config.Xiaomi.model   # pushes partner apps after setup or reset
+com.wdstechnology.android.kryten           # OTA access-point config; updates still work
+com.xiaomi.entitlement.o2
+com.miui.phone.carriers.overlay.h3g
+com.miui.phone.carriers.overlay.vodafone
+
+# Android leftovers
+com.android.egg                        # version easter egg
+com.android.traceur                    # system tracing for developers
+com.android.dreams.basic
+com.android.dreams.phototable
+com.android.hotwordenrollment.okgoogle # "Hey Google" voice training; re-enable to use it
+com.android.hotwordenrollment.xgoogle
+com.microsoftsdk.crossdeviceservicebroker   # Link to Windows; re-enable if you use it
+
+# Preloaded third-party apps (already disabled on this tablet)
+cn.wps.moffice_eng
+cn.wps.xiaomi.abroad.lite              # Mi Doc Viewer
+com.netflix.mediaclient
+com.spotify.music
+com.linkedin.android
+com.zhiliaoapp.musically               # TikTok
+com.vitastudio.mahjong
+
+# Optional: Xiaomi apps. Uncomment the ones you don't use.
+# com.mi.globalbrowser                 # Mi Browser, shows ads
+# com.miui.player                      # Mi Music, shows ads
+# com.miui.videoplayer                 # Mi Video, shows ads
+# com.miui.weather2                    # weather widget stops working
+# com.miui.notes                       # back up notes first
+# com.miui.calculator
+# com.miui.screenrecorder
+# com.miui.huanji                      # Mi Mover, only for moving to a new device
+# com.xiaomi.smarthome                 # Xiaomi Home
+
+# Optional: Google apps. Uncomment the ones you don't use.
+# com.google.android.youtube
+# com.google.android.apps.youtube.music
+# com.google.android.videos            # Google TV
+# com.google.android.apps.maps
+# com.google.android.apps.photos
+# com.google.android.apps.docs         # Drive
+# com.google.android.gm                # Gmail
+# com.google.android.calendar
+# com.google.android.apps.tachyon      # Meet
+# com.google.android.apps.magazines    # Google News
+# com.google.android.apps.subscriptions.red   # Google One
+
+# Optional: accessibility. Uncomment if nobody using this tablet needs them.
+# com.android.systemui.accessibility.accessibilitymenu
+# com.google.android.accessibility.switchaccess

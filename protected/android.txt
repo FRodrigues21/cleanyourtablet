@@ -1,0 +1,65 @@
+# Packages tools/pad.py refuses to touch on any Android tablet (override with --force).
+# One package per line; a trailing ".*" protects every package under that prefix.
+# Rated "never remove" by UAD-ng and/or xiaomi-debloater, or load-bearing on every Android build.
+# Removing these causes bootloops, a dead Settings/launcher, broken Wi-Fi or a device you can't unlock.
+
+# Core framework and system UI
+android
+com.android.systemui
+com.android.settings
+com.android.shell                      # adb shell itself
+com.android.phone
+com.android.server.telecom
+com.android.keychain
+com.android.location.fused
+com.android.localtransport
+com.android.providers.*                # contacts, media, settings, downloads, telephony...
+com.android.se
+com.android.vpndialogs
+com.android.wifi.dialog
+com.android.certinstaller
+com.android.companiondevicemanager     # pairing for watches, pens, earbuds
+com.android.bluetooth
+com.android.mtp                        # USB file transfer
+com.android.managedprovisioning
+com.android.provision
+com.android.backupconfirm
+com.android.statementservice
+com.android.soundpicker
+com.android.dynsystem
+com.android.cts.priv.ctsshim
+com.android.ons
+com.android.mms.service
+com.android.simappdialog
+com.android.proxyhandler
+com.android.internal.systemui.navbar.gestural   # gesture navigation
+
+# Google mainline modules and Play
+com.android.vending
+com.google.android.gms
+com.google.android.gsf
+com.google.android.ext.services
+com.google.android.ext.shared
+com.google.android.permissioncontroller
+com.google.android.packageinstaller
+com.google.android.modulemetadata
+com.google.android.networkstack
+com.google.android.networkstack.tethering
+com.google.android.webview
+com.google.android.documentsui        # the system file picker
+com.google.android.configupdater
+com.google.android.rkpdapp
+com.google.android.sdksandbox
+com.google.android.setupwizard
+com.google.android.connectivity.resources
+com.google.android.wifi.resources
+com.google.android.cellbroadcastservice
+com.google.android.cellbroadcastreceiver   # emergency alerts
+com.google.android.inputmethod.latin       # Gboard: may be the only keyboard
+
+# Qualcomm platform
+com.qualcomm.qti.services.systemhelper
+com.qualcomm.qti.telephonyservice
+com.qualcomm.timeservice
+com.qti.dpmserviceapp
+vendor.qti.hardware.cacert.server
