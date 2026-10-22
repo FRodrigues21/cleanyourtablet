@@ -5,9 +5,9 @@ same Wi-Fi as the tablet. Run it from a clone of this repo so the assistant uses
 and the lists in `devices/` instead of writing its own.
 
 Before you start, on the tablet: Settings → About tablet → tap the OS/Build version 7 times, then
-Developer options → turn on **Wireless debugging**. On Xiaomi, also turn on **USB debugging
-(Security settings)** if you can (it needs a Mi account); it lets the assistant send taps and key
-presses to check its work.
+Developer options → turn on **Wireless debugging**. Check [`docs/`](docs/) for your maker: Xiaomi,
+Redmi and POCO need you signed in to a Xiaomi account before adb can install apps
+([docs/xiaomi.md](docs/xiaomi.md)). Debloating works without it.
 
 ---
 
@@ -28,7 +28,9 @@ Connect
   Local Network.
 
 Back up first
-- Run `tools/pad.py probe` and `tools/pad.py backup`. Show me the probe line.
+- Run `tools/pad.py probe` and `tools/pad.py backup`. Show me the probe line. If probe names a
+  setup guide (`docs/<maker>.md`), or `devices/<my model>/README.md` exists, read it before going
+  on: makers lock parts of adb behind their own switches and accounts.
 - If `devices/` has a folder for my model, start from its `debloat.txt` (`tools/pad.py diff` shows
   what applies). If not, make a draft with `tools/pad.py scaffold --header "$(tools/pad.py probe)"
   --out devices/<brand>-<model>/debloat.txt`. Lists for other tablets from the same maker and OS

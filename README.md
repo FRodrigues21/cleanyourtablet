@@ -29,7 +29,7 @@ You need a computer on the same Wi-Fi as the tablet, [Android platform-tools](ht
 
 | | |
 |---|---|
-| **1. On the tablet** | Settings → About tablet → tap **OS version** seven times. Then Settings → Additional settings → Developer options → **Wireless debugging** on. On Xiaomi, if disabling fails with a `SecurityException`, also turn on **USB debugging (Security settings)**; `pad.py` falls back to removing the package for your user anyway. |
+| **1. On the tablet** | Settings → About tablet → tap **OS version** seven times. Then Settings → Additional settings → Developer options → **Wireless debugging** on. Maker-specific steps are in [`docs/`](docs/); for Xiaomi, Redmi and POCO see [docs/xiaomi.md](docs/xiaomi.md) (installing apps over adb needs a Xiaomi account sign-in). |
 | **2. Pair** | In Wireless debugging, tap **Pair device with pairing code**, then on the computer: `adb pair <ip>:<pairing port>` and `adb connect <ip>:<port>` (the second port is shown on the Wireless debugging screen). |
 | **3. Debloat** | `tools/pad.py backup` → `tools/pad.py diff devices/<your tablet>/debloat.txt` → edit the list → `tools/pad.py disable devices/<your tablet>/debloat.txt --batch 10` |
 

@@ -4,6 +4,9 @@ One folder per tablet model, each with a `debloat.txt` listing the packages that
 on that firmware, grouped and commented. These are starting points: comment out anything you use.
 Lines like `# com.example.app` are optional extras you uncomment yourself.
 
+A folder may also have a `README.md` with what was seen on that model. Setup steps for a whole
+brand are in [`../docs/`](../docs/).
+
 To start a list for a tablet that isn't here, connect it and run
 `tools/pad.py scaffold --header "$(tools/pad.py probe)" --out devices/<brand>-<model>/debloat.txt`.
 

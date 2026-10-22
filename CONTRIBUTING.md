@@ -19,7 +19,12 @@ Thanks for helping more tablets lose their ads. The most useful thing you can se
    `samsung-galaxy-tab-s9-fe`, `lenovo-tab-p12`. Different firmware regions of the same model can
    share a folder if the list is the same; otherwise add `-cn`, `-in` and so on.
 6. Add a row to `devices/README.md` and one to the README's tablet table.
-7. Run `python3 -m unittest discover -s tests -v`.
+7. Setup quirks go in two places. Anything true for the whole brand (accounts, hidden switches,
+   error messages and their fixes) goes in `docs/<maker>.md`, named after
+   `ro.product.manufacturer` in lowercase so `tools/pad.py probe` can point people to it. Anything
+   only seen on your model goes in `devices/<folder>/README.md`, linking to the maker guide. Write
+   down what you saw, with the exact error text, not what you've read elsewhere.
+8. Run `python3 -m unittest discover -s tests -v`.
 
 Never list packages to *uninstall*. Lists are applied with `pm disable-user`, with
 `pm uninstall -k --user 0` only as a fallback the tool records, so everything can be undone from

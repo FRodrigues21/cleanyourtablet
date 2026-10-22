@@ -70,6 +70,20 @@ class DeviceListsTest(unittest.TestCase):
                         name = body[:-2] if body.endswith(".*") else body
                         self.assertTrue(name == "android" or pad.PACKAGE_RE.match(name), body)
 
+    def test_device_notes_link_to_files_that_exist(self):
+        for f in folders():
+            notes = f / "README.md"
+            if not notes.is_file():
+                continue
+            with self.subTest(folder=f.name):
+                for target in re.findall(r"\]\(([^)#:]+)\)", notes.read_text(encoding="utf-8")):
+                    self.assertTrue((f / target).resolve().exists(), f"broken link: {target}")
+
+    def test_maker_guides_are_found_by_probe(self):
+        for guide in sorted((ROOT / "docs").glob("*.md")):
+            with self.subTest(guide=guide.name):
+                self.assertEqual(pad.maker_guide(guide.stem.capitalize()), guide)
+
     def test_devices_table_matches_folders(self):
         rows = table_rows(DEVICES / "README.md", "| Folder |")
         listed = [re.match(r"\|\s*`([^`/]+)/`\s*\|", r).group(1) for r in rows]

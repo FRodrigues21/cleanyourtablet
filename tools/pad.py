@@ -206,6 +206,16 @@ def cmd_probe(t, args):
     print(f"# {name} ({t.prop('ro.product.model')}, {t.prop('ro.product.device')}, "
           f"{t.prop('ro.product.name')}), {os_part}, Android {t.prop('ro.build.version.release')} "
           f"(SDK {t.prop('ro.build.version.sdk')}), region {region}")
+    guide = maker_guide(maker)
+    if guide:  # stderr, so `$(pad.py probe)` still captures only the header line
+        print(f"Setup notes for {maker} devices: {guide.relative_to(ROOT)}", file=sys.stderr)
+
+
+def maker_guide(maker):
+    """docs/<maker>.md for this manufacturer (Redmi and POCO report Xiaomi), if there is one."""
+    name = re.sub(r"[^a-z0-9]+", "-", (maker or "").lower()).strip("-")
+    guide = ROOT / "docs" / f"{name}.md"
+    return guide if name and guide.is_file() else None
 
 
 def cmd_backup(t, args):
